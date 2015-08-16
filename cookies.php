@@ -10,15 +10,11 @@
     {
         $_SESSION[$session_name]=1;
     }
-
 ?>
-
 <html>
 <body>
 <h3>VitoshAcademy.Com</h3>
-<?
-    
-    
+<?  
     if($_SESSION[$session_name]==1)
         echo "Welcome for the first time in vitoshacademy.com";
     else
