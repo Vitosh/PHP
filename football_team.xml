@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<football_team>
+   <name>CSKA Sofia</name>
+   <city>Sofia</city>
+   <nickname>The Reds</nickname>
+   <history>
+      <champion>31</champion>
+      <cup>19</cup>
+   </history>
+   <founded>1948</founded>
+</football_team>
