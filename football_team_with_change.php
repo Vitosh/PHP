@@ -1,6 +1,7 @@
 <html>
 <body>
-<?php
+
+<?
 $football_team = simplexml_load_file("football_team.xml");
 
 echo "<h2>Facts for $football_team->name</h2><hr>";
