@@ -2,12 +2,16 @@
 <head>
     <title>Game</title>
     <style>
-        body{margin: 5px;}
+        body{
+            margin: 5px;
+            background-color:yellow;}
+        }
         img{
             margin:5px;
             height:20%;
             width:20%;
             }
+        
     </style>
     <script>
         window.onload = init;
@@ -19,24 +23,6 @@
             {
                 images[i].onclick = showAnswer;
             }
-        }
-        
-        function changeSomething(i)
-        {
-            var image = images[i];
-            var name = image.id;
-            var path = image.src;
-            
-            if (path.indexOf("blur")> -1)
-            {
-                name = name + ".jpg";
-            }
-            else
-            {
-                name = name + "blur.jpg";
-            }
-                        
-            image.src = name;
         }
         
         function generateRandom(fromValue, toValue, withoutValue)
