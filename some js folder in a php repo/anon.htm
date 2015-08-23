@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Count Me</title>
+    <style>
+    body, button {margin:15px;}
+    div {padding:10px; background-color: yellow }
+    </style>
+    <script>      
+        window.onload = function()
+        {  
+            var countMe = makeCounter();
+            div = document.getElementById("message");
+            myButton = document.getElementById("clickMe");
+            
+            myButton.onclick = function ()
+            {                           
+                div.innerHTML +=  countMe() +"|" + parseInt(document.getElementById("myNumber").value, 10) + "<hr>" ; 
+            } 
+            
+            function makeCounter()
+            {
+                initial = 0;
+                function counter()
+                {
+                    var number = parseInt(document.getElementById("myNumber").value, 10);
+                    initial += number;
+                    return initial; 
+                }
+                return counter;
+            }
+        }
+    </script>
+    
+</head>
+    <body>
+    <button id = "clickMe">O Yeah!</button>
+    <input type="text" id = "myNumber"/>
+    <div id="message"></div>
+</body>
+</html>
