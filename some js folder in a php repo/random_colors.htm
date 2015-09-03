@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>JQ 10</title>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+        $(document).ready(function () {  
+            $("div").each(function(i){
+                $("div").eq(i).html(Math.random());
+                var colors = ["blue","orange","gray","red","purple","white","green","AliceBlue","gold","SeaShell"];
+                var random_back = colors[Math.floor(Math.random() * colors.length)];
+                $('div').eq(i).css('background-color',random_back);
+                var random_font = colors[Math.floor(Math.random() * colors.length)];
+                $('div').eq(i).css('color',random_font);                
+            })
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li><div></div></li>
+        <li><div></div></li>
+        <li><div></div></li>
+        <li><div></div></li>
+        <li><div></div></li>
+        <li><div></div></li>
+    </ul>
+</body>
+</html>
