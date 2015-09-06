@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>VitoshAcademy JQ</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#main1").last().css({"background": "#888888" , "border-bottom": "3px double red"});
+            $("#main1 div:first-child").css({"background": "#CECACE" , "border-bottom": "3px double red"});
+           
+            $("#main2").children().css({"background": "#999999" , "border-bottom": "3px double red"});
+            $("#main2 div:last-child").last().css({"background": "#ABBBBA" , "border-bottom": "3px double blue"});
+            
+            $("#main3 div:nth-child(2)").append( "<span> - That is the second child!</span>" );
+            $("#main3 div:nth-child(3)").css({"border": "5px double green"});
+            });
+    </script>
+</head> 
+<body>
+    <div id="main1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <hr />
+    <div id="main2">
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+    </div>
+    <hr />
+    <div id="main3">
+        <div>9</div>
+        <div>0</div>
+        <div>1</div>
+        <div>2</div>
+    </div>
+</body>
+</html>
