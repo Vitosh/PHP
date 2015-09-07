@@ -1,0 +1,41 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function(){
+        $("img").click(function(event){
+            $("#information").html("You clicked over an image <hr>"); 
+        });
+        
+        $("img").mousemove(function(event){
+            var coordinates = ""+ event.pageX + "< -- >" + event.pageY + "";
+            $("#information").html("You are moving over an image <hr>" + coordinates); 
+        });
+        
+        $("img").mouseout(function(event){
+            $("#information").html("<iframe width=100% src='https://www.youtube.com/embed/5AcigKiu_Gk' frameborder='0' allowfullscreen></iframe>"); 
+        });
+                
+        $("#information").mousemove(function(event){
+            $(this).html("<i>Can you find how to start Youtube?</i>");
+        })
+    });
+</script>
+    
+</head>
+<body>
+    <h1>VitoshAcademy.Com Table Game</h1>
+    <table border = "1">
+    
+    <tr>
+        <td><img src="images/i1.jpg" id="i1" height="40%"/></td>
+        <td><img src="images/i2.jpg" id="i2" height="40%"/></td>
+    </tr>
+    
+    <tr>
+        <td><img src="images/i3.jpg" id="i3" height="40%"/></td>
+        <td id="information" bgcolor="lightblue"></td>
+    </tr>        
+    </table>
+</body>
+</html>
