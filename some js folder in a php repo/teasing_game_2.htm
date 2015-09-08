@@ -1,0 +1,82 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function(){
+        $("img").click(function(event){
+            $("#information").html("You clicked over an image <hr>"); 
+        });
+        
+        $("img").mousemove(function(event){
+            var coordinates = ""+ event.pageX + "< -- >" + event.pageY + "";
+            $("#information").html("You are moving over an image <hr>" + coordinates); 
+        });
+        
+        $("img").mouseout(function(event){
+            $("#information").html("Test"); 
+        });
+                
+        $("#information").mousemove(function(event){
+            $(this).html("<i>Can you find how to start Youtube?</i>");
+        })
+        
+        $("#btn1").click(function(){
+            $("img").slideUp("slow"); 
+        });
+        
+        $("#btn2").click(function(){
+            $("img").slideDown("fast"); 
+        });
+        
+        $("#btn3").click(function(){
+            $("#i2").slideToggle(1000);
+            $("#i3").slideToggle(100000);
+        });
+
+        $("#btn4").click(function(){
+            $("#information").fadeIn();
+        });
+        
+                
+        $("#btn5").click(function(){
+            $("#information").fadeOut();
+        });
+        
+        $("#btnA").click(function(){
+            $("#i2").animate({
+                width: "100%",opacity: 0.5},{duration:2000})
+                .animate({
+                width:"40%",opacity:0.9},{duration:2000});
+        });
+    });
+</script>
+    
+</head>
+<body>
+    <h1>VitoshAcademy.Com Table Game</h1>
+    <table border = "1" align="center">
+    
+    <tr>
+        <td><button id="btn1">Slide Down</button></td>
+        <td><img src="images/i2.jpg" id="i2" height="40%"/></td>
+    </tr>
+    
+    <tr>
+        <td><img src="images/i3.jpg" id="i3" height="40%"/></td>
+        <td id="information" bgcolor="lightblue"></td>
+    </tr>        
+    
+    <tr>
+        <td><button id="btn2">Slide Up</button></td>
+        <td><button id="btn3">Toggle</button></td>
+    </tr>        
+    <tr>
+        <td><button id="btn4">Fade in</button></td>
+        <td><button id="btn5">Fade Out</button></td>
+    </tr>  
+    <tr>
+        <td><button id="btnA">Animate</button></td><td>Advertise here!</td>
+    </tr>       
+    </table>
+</body>
+</html>
