@@ -1,0 +1,23 @@
+body{
+	background-color:#973379;
+}
+
+#logo {
+	position:relative;
+	z-index: 4;
+}
+
+#container{
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index: 0;
+}
+
+.background_pics{
+	display:none;
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index: 0;
+}
