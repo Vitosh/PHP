@@ -1,0 +1,58 @@
+<html>
+<head>
+<style>
+    li {
+       list-style-image: url('ul_image.png');
+    }
+    div {
+        background-color: silver;
+    }
+</style>
+</head>
+<body>
+    <div id='my_div'>
+    </div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+            var TIME = 5000;
+            keep_on_asking_the_db_for_data();
+            
+           	function keep_on_asking_the_db_for_data(){
+    			setTimeout(function(){
+    					ask_for_data();
+    					keep_on_asking_the_db_for_data();
+    			},TIME);
+            }
+            
+            function ask_for_data(){
+                $('#my_div').empty();
+                var number = 0;
+                
+                $.getJSON("my_php.php?query_name=todo_list", function(json){
+                    $.each(json.todo_result,function(){
+                        number++;
+                        var line = '<li>'+number+ ' ' + this['some_text'] + ' ' + this['some_ID'] + ' ' + this['some_userid'] + '</li>';
+                        $('#my_div').append(line);
+                    }); 
+                });
+            };
+        });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
