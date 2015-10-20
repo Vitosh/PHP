@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html ng-app="myFootballTeamApp">
+    <style>
+        hr {
+            height:2px;
+            background-color:red;
+        }
+    </style>
+    <head>  
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+            <script>           
+            angular.module('myFootballTeamApp', [])
+                .controller('FootballTeamController', function($scope) {
+                    $scope.footballteams = [
+                        "CSKA Sofia",
+                        "Zenith"];
+            
+                    $scope.add = function(){
+                    $scope.footballteams.push($scope.newteam);
+                    $scope.newteam= "";
+                    }
+            
+                });
+            </script>
+    </head>
+    <body>
+        <hr />
+        <div>
+            <label>Enter some text here:</label>
+            <input type="text" ng-model="someText" placeholder="Write something">
+            <h5>{{someText.toUpperCase()}}</h5>
+            <h5>{{someText.replace("o"," ~do not write o~ ")}}</h5>
+            <h5>{{someText.slice(1,14)}}</h5>
+        </div>
+        <hr />
+        <div ng-controller="FootballTeamController">
+            New football team:<input type="text" ng-model="newteam"/>
+            <button ng-click="add()">Add</button>
+            <h2>My Football Teams:</h2>
+            <span>{{footballteams.length}} present now.</span>
+            <li ng-repeat="teams in footballteams">
+                <span>{{teams}}</span>
+            </li>
+        </div>
+        <hr />
+    </body>
+</html>
