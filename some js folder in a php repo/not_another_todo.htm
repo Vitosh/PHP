@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Just Another To Do list...</title>
+    <style>
+        .done_mark {
+            text-decoration: line-through;
+            color:blue;
+            font-size:50px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", setup);
+        function setup() {
+            var my_list = document.getElementsByTagName("li");
+            for (var i = 0; i < my_list.length; i++) {
+                my_list[i].addEventListener("click", change_lists);
+            }
+        }
+        function change_lists(event) {
+            var li = event.target;
+            var liTodo = document.getElementById("done"); 
+            var liDone = document.getElementById("todo");
+
+            if (li.parentNode.id == "todo") {
+                liTodo.insertBefore(li,liTodo.firstChild);
+                li.classList.add("done_mark");
+            } else {
+                liDone.insertBefore(li,liDone.firstChild);
+                li.classList.remove("done_mark");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>To do:</h1>
+    <ul id="todo">
+        <li>Walk the dog</li>
+        <li>Wash the dishes</li>
+        <li>Make world peace</li>
+        <li>Put ads in VitoshAcademy.Com</li>
+        <li>Cook spaghetti</li>
+    </ul>
+    <h1>Done:</h1>
+    <ul id="done">
+    </ul>
+</body>
+</html>
