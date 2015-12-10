@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>OOP VitoshAcademy</title>
+    <script>
+        function Article(title, language, writer) {
+            this.title = title;
+            this.language = language;
+            this.writer = writer;
+        }
+
+        Article.prototype = {
+
+
+            like_yourself_in_fb: function () {
+                alert(this.writer + " has liked in facebook " + this.title);
+            },
+
+            info_about_article: function (paragraphs_number) {
+                alert(this.title + " " + paragraphs_number + " paragraphs!");
+            }
+        };
+
+        var first_article = new Article("VBA is fun!", "VBA", "Vitosh");
+        var second_article = new Article("C# is not that easy!", "C#", "Pesho");
+        second_article.number_of_paragraphs = 15;
+        first_article.has_pic = false;
+
+        first_article.like_yourself_in_fb();
+        second_article.like_yourself_in_fb();
+        first_article.info_about_article(5);
+        second_article.info_about_article(12);
+
+    </script>
+    </head>
+<body>
+<h1>Click refresh to see the 4 msgboxes once again!</h1>
+<noscript>JS is not activated.</noscript>
+</body>
+</html>
