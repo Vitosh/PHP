@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>VitoshAcademy.Com</title>
+    <script>
+        var name1 = " by name";
+        var name2 = " by result";
+        var str_text = "The list is currently ordered";
+        window.addEventListener("load", init);
+
+        function init() {
+            document.getElementById("save").addEventListener("click", readInputCookies);
+            //document.getElementById("cb_sort").addEventListener("click",readInputCookies);
+            //document.getElementById("cb_historical").addEventListener("click",readInputCookies);
+            showCookies();
+        }
+
+        function getCookies()
+        {
+            var obj = new Object();
+            var obList = document.cookie.split("; ");
+            for (var i=0; i < obList.length; i++)
+            {
+                var obj_s = obList[i].split("=");
+                obj[obj_s[0]] = unescape(obj_s[1]);
+            }
+            return obj;
+        }
+
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            showCookies();
+        }
+
+        String.prototype.toProperCase = function () {
+            return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase(           ) + txt.substr(1).toLowerCase();});
+        };
+
+        function getSortedKeys(obj) {
+            var keys = []; for(var key in obj) keys.push(key);
+            return keys.sort(function(a,b){return obj[a]-obj[b]});
+        }
+
+        function showCookies() {
+            emptyRanking();
+            var rankingList = document.getElementById("rankingList");
+
+            if (document.getElementById("cb_sort").checked){
+                document.getElementById("cb_label").innerHTML = name1;
+                document.getElementById("current_order").innerHTML = str_text + name2;
+
+                var cookies = getCookies();
+                var sorted_cookies = getSortedKeys(cookies);
+
+                for (var i = 0; i < sorted_cookies.length; i++) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(sorted_cookies[i] +" " + cookies[sorted_cookies[i]]));
+                    rankingList.appendChild(li);
+                }
+            } else {
+                document.getElementById("cb_label").innerHTML = name2;
+                document.getElementById("current_order").innerHTML = str_text + name1;
+                var cookies = document.cookie.split(";").sort();
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(cookies[i]));
+                    rankingList.appendChild(li);
+                }
+            }
+
+            if (document.getElementById("cb_historical").checked){
+                document.getElementById("cb_sort").disabled = true;
+                document.getElementById("current_order").innerHTML = str_text + " historically.";
+                emptyRanking();
+                var history_cookies = document.cookie.split(";");
+
+                for (var i = 0; i < history_cookies.length; i++) {
+                    var li = document.createElement("li");
+                    li.appendChild(document.createTextNode(history_cookies[i]));
+                    rankingList.appendChild(li);
+                }
+            }else{
+                document.getElementById("cb_sort").disabled = false;
+            }
+
+            if (document.cookie.length == 0){
+                rankingList.innerHTML = "Nothing to show here, sorry...";
+            }
+        }
+
+        function emptyRanking() {
+            var rankingList = document.getElementById("rankingList");
+            while (rankingList.firstChild) {
+                rankingList.removeChild(rankingList.firstChild);
+            }
+        }
+
+        function readInputCookies() {
+
+            var nameField = document.getElementById("name");
+            var valueField = document.getElementById("value");
+            var name = nameField.value;
+            var value = valueField.value;
+            name = name.toProperCase();
+
+            setCookie(name, value);
+            nameField.value = "";
+            valueField.value = "";
+            showCookies();
+        }
+
+        function setCookie(name, value) {
+            if (pruefeCookieName(name) && checkCookie(value)) {
+                document.cookie = name + "=" + value + "; expires=Sat, 29 Feb 2020 12:34:56 UTC";
+            }
+        }
+
+        function pruefeCookieName(name) {
+            if (name.indexOf(",") > -1 || name.indexOf(";") > -1 || name.indexOf(" ") > -1 || name.indexOf("=") > -1) {
+                alert("Unvalid Name");
+                return false;
+            }
+            return true;
+        }
+
+        function checkCookie(value) {
+            if (value.indexOf(",") > -1 || value.indexOf(";") > -1 || value.indexOf(" ") > -1) {
+                alert("Unvalid");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+        div {
+            background-color: grey;
+            margin: 100px;
+            padding: 100px,100px,100px,100px;
+        }
+        body{
+            background-color: black;
+        }
+        label{
+            margin-left: 9px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Some Ranking List Options</h1>
+        <hr>
+        <h2>Insert New Cookie</h2>
+        <h4>Name:</h4><input id="name" name="name"/><h4>Result:</h4><input id="value" name="value"/>
+        <button type="button" id="save">Save</button>
+        <button onclick="deleteAllCookies()">Delete Cookies</button><br>
+        <h2 id="current_order"></h2><hr>
+        <input type="checkbox" id="cb_sort" onclick="showCookies()"><label for ="cb_sort" id="cb_label"></label>
+        <br>
+        <input type="checkbox" id="cb_historical" onclick="showCookies()"><label>historically</label><br>
+        <ul class="list-group-item-text" id="rankingList"></ul>
+    </div>
+</body>
+</html>
