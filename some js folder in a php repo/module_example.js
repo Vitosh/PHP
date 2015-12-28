@@ -9,7 +9,6 @@
 			var vitoshacademy = (function(){
 
 				var articles = [];
-				var authors = [];
 
 				function letArticles(date, title){
 					articles.push([date,title]);
@@ -23,13 +22,19 @@
 					return articles;
 				}
 
+				function deleteArticles(){
+					articles = [];
+				}
+
 				return{
 					la: letArticles,
 					ga: getArticles,
-					ca: changeArticleTitle 
+					ca: changeArticleTitle,
+					de: deleteArticles
 				};
 			})();
-
+			vitoshacademy.de();
+			console.log(vitoshacademy.ga());
 			vitoshacademy.la("12/12/2015","How to code?");
 			vitoshacademy.la("12/12/2016","How to code even better?");
 			console.log(vitoshacademy.ga());
