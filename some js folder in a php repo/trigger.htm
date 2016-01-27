@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>VitoshAcademy</title>
+		<meta http-equiv="content-type" content = "text/html"; charset=UTF-8"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script>		
+		$(document).ready(function(){
+			
+			var my_str = "";
+			
+			$('#button_one').click(function(){
+				my_str = "A button with ID " + $(this).attr('id') + " was clicked.";
+				$("#my_results").html(my_str);
+			});
+			
+			$("#button_two").click(function(){
+				$("#button_one").trigger('click');
+			});
+			
+			$("#button_three").click(function(){
+				$("#button_one").triggerHandler('click');
+				//window.location = "http://www.vitoshacademy.com";
+			});
+			
+			$('#anchor_1').on('click', function(){
+				my_str = 'The element with ID ' + $(this).attr("id") + ' was clicked.';
+				$("#my_results").html(my_str);
+			});
+			
+			$("#anchor_2").on('click', function(){
+				$('#anchor_1').trigger('click');
+			});
+			
+			$("#anchor_3").on('click', function(){
+				$('#anchor_1').triggerHandler('click');
+			});
+			
+		});
+		</script>
+	<head>
+	<body>
+		<div class="container-fluid">
+			<h1>The examples</h1><br>
+			<div class="col-*-*">
+				<form id="my_form" action="http://www.vitoshacademy.com"> 
+					<button id="button_one" type="submit">Button 1</button>		
+				</form>
+				<hr>
+				<button id="button_two">Button 2</button>
+				<hr>
+				<button id="button_three">Button 3</button>
+				<hr>
+				<a href ="http://www.vit-consulting.com" id="anchor_1" >anchor_1</a>
+				<hr>
+				<a id="anchor_2" >anchor_2</a>
+				<hr>
+				<a id="anchor_3" >anchor_3</a>
+				<hr>
+				<div  id="my_results" class="container">Here comes the text!</div>
+			</div>
+		</div>
+	</body>
+</html>
