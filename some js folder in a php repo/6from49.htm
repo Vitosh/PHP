@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>VitoshAcademy</title>
+		<meta http-equiv="content-type" content = "text/html"; charset=UTF-8"/>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>		
+		$(document).ready(function(){		
+		
+		
+			var calc = function() {
+				var factorial = function(val) {
+					if ($.isNumeric(val)) {
+						val = parseInt(val);
+						if (val < 0) {
+							return "invalid value";
+						} else if (val === 1 || val === 0) {
+							return 1;
+						} else {
+							return val * factorial(val - 1);
+						}
+					}
+					return "value passed is not valid";
+					};
+					return {
+						factorial: factorial
+					};
+			}();
+					
+			$("#lbig").bind("change paste keyup", function() {
+				print_msg();
+			});		
+			
+			$("#lsmall").bind("change paste keyup", function(){
+				print_msg();
+			});
+			
+			
+			function print_msg() {
+				var my_result = "";
+				var small = $("#lsmall").val();
+				var big = $("#lbig").val();
+				
+				my_result = (calc.factorial(big))/(calc.factorial(big-small));
+				$("#my_results_order_significant").html('').append(my_result.toLocaleString());
+				
+				my_result = my_result/calc.factorial(small);
+				$("#my_results_order_any").html('').append(my_result.toLocaleString());
+			};			
+		});
+	</script>
+	<head>
+	<body>
+		<div class="container-fluid">
+			<h1>Lotto is not a good game for me</h1><br>
+			<div class="col-*-*">
+				<input id = "lsmall" type="number" value="small number">
+				<input id = "lbig" type = "number" value = "big number">
+				<hr>
+				<div>With significant order:</div>
+				<div  id="my_results_order_significant" class="container"></div>
+				<div>Without significant order:</div>
+				<div  id="my_results_order_any" class="container"></div>
+			</div>
+		</div>
+	</body>
+</html>
